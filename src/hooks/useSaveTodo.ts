@@ -42,7 +42,7 @@ export function useSaveTodo(props: Props) {
               if (c.id === params.id) {
                 return [...p, { ...c, status: 'loading' }]
               }
-              return { ...p, c }
+              return [...p, c]
             }, [])
             client.setQueryData<TodoList>(cacheKey, newTodoList)
           }
@@ -76,3 +76,21 @@ export function useSaveTodo(props: Props) {
     }
   )
 }
+
+//reduceとは
+
+// type Student = {
+//   name: string;
+//   score: number;
+// }
+
+// const data: Student[] = [
+//   { name: '太郎', score: 75 },
+//   { name: '花子', score: 62 },
+//   { name: 'John', score: 59 }
+// ]
+// const scoreList: number[] = data.reduce((acc: number[], val: Student): number[] => {
+//   return [...acc, val.score];
+// }, []);
+
+// console.log(scoreList); // --> [ 75, 62, 59 ]
